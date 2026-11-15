@@ -434,6 +434,12 @@ a.doc:hover{background:var(--ink);color:var(--white)}.doc.off{border-style:dashe
   .ctl{align-self:start;margin:var(--cm) 0 0!important;padding-top:calc(var(--ip) + (1.1*var(--H) - var(--A))/2)!important;align-items:center!important}
 }
 .tech .lnk,.tmore .lnk{border-bottom:0!important;text-decoration:none!important;padding-bottom:0}
+/* hero v2 (desktop): photo ~8% smaller, lowered 30px, soft edges so the wall blends into the hero background */
+@media (min-width:981px){
+  .hero .bg{inset:auto 0 0 auto;top:30px;width:92%;height:calc(100% - 30px);object-position:100% 45%;transform-origin:100% 100%;
+    -webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%),linear-gradient(to bottom,transparent 0,#000 8%);-webkit-mask-composite:source-in;
+    mask-image:linear-gradient(to right,transparent 0,#000 14%),linear-gradient(to bottom,transparent 0,#000 8%);mask-composite:intersect}
+}
 </style>
 </head>
 <body>
@@ -523,7 +529,7 @@ const SECTIONS_CONTENT={
   {name:'Трихология',text:'Комплексный подход к здоровью волос и кожи головы. Диагностика состояния кожи головы, выявление причин выпадения и ухудшения качества волос, а также индивидуальный подбор процедур и рекомендаций.',imgs:['trihology-treatment01.webp','trihology-treatment02.webp'],align:'right',hint:'Диагностика кожи головы или процедура для здоровья волос, тёплые бежевые тона'},
   {name:'Дерматология и лазерные<br>технологии Aerolase Neo',text:'Канадская лазерная технология для работы с акне, постакне, пигментацией, неровным тоном кожи и возрастными изменениями. Применяется также при отдельных дерматологических состояниях, включая розацеа и псориаз, по показаниям врача.',imgs:['dermatology-laser01.webp','dermatology-laser02.webp'],align:'left',hint:'Аппарат Aerolase Neo или реальная лазерная процедура'},
   {name:'Программы омоложения',text:'Комплексные программы для улучшения состояния кожи и коррекции возрастных изменений. Сочетание косметологических и аппаратных методик для естественного и гармоничного результата.',imgs:['','',''],align:'right',hint:'Уверенная взрослая женщина с естественной здоровой кожей и лёгкой улыбкой'},
-  {name:'Эндокринология и<br>контроль веса',text:'Индивидуальные программы снижения веса, включая пептидную терапию по медицинским показаниям, с обследованием и сопровождением врача-эндокринолога.',imgs:['endocrinology-loseweight-02.webp',''],align:'left',hint:'Врач-эндокринолог консультирует пациента в премиальном медицинском интерьере'}]},
+  {name:'Эндокринология и<br>контроль веса',text:'Индивидуальные программы снижения веса, включая пептидную терапию по медицинским показаниям, с обследованием и сопровождением врача-эндокринолога.',imgs:['endocrinology-loseweight-02.webp','endocrinology-loseweight-03.webp'],align:'left',hint:'Врач-эндокринолог консультирует пациента в премиальном медицинском интерьере'}]},
  why:{eyebrow:'03 / ПОЧЕМУ EXPERT CLINIC',lines:['Технологии, которым доверяют.','Забота, которую чувствуешь.'],
   lead:'В Expert Clinic современное оборудование сочетается с медицинским подходом и вниманием к каждому пациенту. Диагностика, технологии и опыт специалистов помогают подобрать решения с учётом состояния кожи, здоровья и индивидуальных целей.',
   /* image: path/URL of the REAL clinic interior photo; pos = object-position */
