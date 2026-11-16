@@ -440,6 +440,26 @@ a.doc:hover{background:var(--ink);color:var(--white)}.doc.off{border-style:dashe
     -webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%),linear-gradient(to bottom,transparent 0,#000 8%);-webkit-mask-composite:source-in;
     mask-image:linear-gradient(to right,transparent 0,#000 14%),linear-gradient(to bottom,transparent 0,#000 8%);mask-composite:intersect}
 }
+/* footer v2 (mockup 1920): logo on top, contacts 2x2 + nav in right column, legal row at the bottom */
+.ftop{margin-bottom:clamp(48px,5vw,94px)}
+.ftop .wm{font-size:clamp(44px,3.1vw,60px)}
+.c8{align-items:stretch}
+.cr{display:flex;flex-direction:column;justify-content:space-between;gap:40px;border-left:1px solid rgba(246,242,237,.22);padding:0 0 clamp(14px,1.1vw,20px) clamp(28px,3.9vw,75px)}
+.cr .ct{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,1.6vw,30px) clamp(24px,2vw,40px);border:0;padding:0;margin:0}
+.cr .ct dt{font-size:clamp(14px,1.1vw,21px);letter-spacing:.1em;opacity:1;color:rgba(246,242,237,.6);margin:0 0 clamp(8px,.7vw,12px)}
+.cr .ct dd{font-size:clamp(15px,1.1vw,21px);line-height:1.4;color:rgba(246,242,237,.85);overflow-wrap:anywhere}
+.cr .ct .pl{color:rgba(246,242,237,.55)}
+.cr .fl{font-size:clamp(12px,.8vw,14px);gap:10px 28px}
+.foot{margin-top:clamp(48px,4.2vw,80px);padding-top:clamp(20px,1.6vw,28px);display:block}
+.foot .fine{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}
+#contacts.sec{padding-top:clamp(24px,2.2vw,40px);padding-bottom:clamp(28px,2.4vw,40px)}
+.foot .fine{border-top:0!important;padding-top:0!important;margin-top:0!important}
+.cr .ct .pl{color:rgba(246,242,237,.65)}
+@media (max-width:860px){
+  .cr{border-left:0;border-top:1px solid rgba(246,242,237,.22);padding:28px 0 0;gap:32px}
+  .ftop{margin-bottom:40px}
+}
+@media (max-width:479px){.cr .ct{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -631,7 +651,7 @@ const upd=()=>{const r=tl.getBoundingClientRect(),p=RM?1:clamp((innerHeight*.8-r
 addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});addEventListener('resize',upd);upd();
 /* 08 consultation + footer */
 const K=C.cta,F=C.footer;
-q('#contacts').innerHTML=`<p class='eyebrow rv'>${K.eyebrow}</p><h2 id='h-ct' class='rv'>${K.title}</h2><div class='c8'><div class='rv'><p class='lead'>${K.lead}</p><form class='fm' id='fm' novalidate style='margin-top:40px'><input type='text' name='website' tabindex='-1' autocomplete='off' aria-hidden='true' style='position:absolute;left:-9999px;width:1px;height:1px;opacity:0'><div class='f'><label for='fn'>Имя</label><input id='fn' name='name' autocomplete='name'><span class='er' data-e='name'></span></div><div class='f'><label for='fp'>Телефон</label><input id='fp' name='phone' type='tel' inputmode='tel' autocomplete='tel' placeholder='+7'><span class='er' data-e='phone'></span></div><div class='f'><label for='fi'>Что вас интересует?</label><div class='sel'><select id='fi' name='topic'><option value=''>Выберите направление</option>${K.interests.map(o=>`<option>${o}</option>`).join('')}</select></div><span class='er' data-e='topic'></span></div><button class='btn' type='submit'>${K.submit}</button><p class='st' id='st' role='status' aria-live='polite'></p></form></div><dl class='ct rv'>${K.contacts.map(c=>`<div><dt>${c.label}</dt><dd>${c.value?(c.href?`<a href='${esc(c.href)}'>${c.value}</a>`:c.value):`<span class='pl'>${c.ph}</span>`}</dd></div>`).join('')}</dl></div><footer class='foot rv'><div class='wm'><b>éxpert</b><small>MEDICAL AESTHETICS</small></div><nav class='fl' aria-label='Навигация в подвале'>${F.links.map(l=>`<a href='${l[1]}'>${l[0]}</a>`).join('')}</nav><div class='fine'>${F.privacy?`<a href='${esc(F.privacy)}'>Политика конфиденциальности</a>`:`<span>Политика конфиденциальности</span>`}<span>${F.copy}</span></div></footer>`;
+q('#contacts').innerHTML=`<div class='ftop'><div class='wm'><b>éxpert</b><small>MEDICAL AESTHETICS</small></div></div><p class='eyebrow rv'>${K.eyebrow}</p><h2 id='h-ct' class='rv'>${K.title}</h2><div class='c8'><div class='rv'><p class='lead'>${K.lead}</p><form class='fm' id='fm' novalidate style='margin-top:40px'><input type='text' name='website' tabindex='-1' autocomplete='off' aria-hidden='true' style='position:absolute;left:-9999px;width:1px;height:1px;opacity:0'><div class='f'><label for='fn'>Имя</label><input id='fn' name='name' autocomplete='name'><span class='er' data-e='name'></span></div><div class='f'><label for='fp'>Телефон</label><input id='fp' name='phone' type='tel' inputmode='tel' autocomplete='tel' placeholder='+7'><span class='er' data-e='phone'></span></div><div class='f'><label for='fi'>Что вас интересует?</label><div class='sel'><select id='fi' name='topic'><option value=''>Выберите направление</option>${K.interests.map(o=>`<option>${o}</option>`).join('')}</select></div><span class='er' data-e='topic'></span></div><button class='btn' type='submit'>${K.submit}</button><p class='st' id='st' role='status' aria-live='polite'></p></form></div><div class='cr rv'><dl class='ct'>${K.contacts.map(c=>`<div><dt>${c.label}</dt><dd>${c.value?(c.href?`<a href='${esc(c.href)}'>${c.value}</a>`:c.value):`<span class='pl'>${c.ph}</span>`}</dd></div>`).join('')}</dl><nav class='fl' aria-label='Навигация в подвале'>${F.links.map(l=>`<a href='${l[1]}'>${l[0]}</a>`).join('')}</nav></div></div><footer class='foot rv'><div class='fine'>${F.privacy?`<a href='${esc(F.privacy)}'>Политика конфиденциальности</a>`:`<span>Политика конфиденциальности</span>`}<span>${F.copy}</span></div></footer>`;
 const fm=q('#fm'),msg=q('#st');
 window.__t0=Date.now();
 fm.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(fm),er={};
