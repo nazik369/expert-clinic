@@ -35,8 +35,9 @@ a{color:inherit;text-decoration:none}
 .nav a:hover::after{transform:scaleX(1)}
 .menu-btn{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;color:var(--ink)}
 .menu-btn span{display:block;width:24px;height:1.5px;background:currentColor;margin:6px auto;transition:transform .3s var(--ease),opacity .3s}
-.menu-btn[aria-expanded=true] span:first-child{transform:translateY(3.7px) rotate(45deg)}
-.menu-btn[aria-expanded=true] span:last-child{transform:translateY(-3.7px) rotate(-45deg)}
+.menu-btn[aria-expanded=true] span:first-child{transform:translateY(7.5px) rotate(45deg)}
+.menu-btn[aria-expanded=true] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded=true] span:last-child{transform:translateY(-7.5px) rotate(-45deg)}
 
 /* Button */
 .btn{display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:var(--white);border:0;font:500 14px/1 var(--f-body);padding:16px 24px;border-radius:30px;cursor:pointer;transition:background .35s var(--ease)}
@@ -81,8 +82,8 @@ h1 .ln>span{animation:up .95s var(--ease) both}
 @media (max-width:980px){
   .nav{position:fixed;inset:0;background:var(--bg2);z-index:15;display:flex;align-items:center;padding:0 var(--pad);visibility:hidden;opacity:0;transition:opacity .4s var(--ease),visibility .4s}
   .nav.open{visibility:visible;opacity:1}
-  .nav ul{flex-direction:column;gap:18px}
-  .nav a{font:500 clamp(36px,10vw,56px)/1.05 var(--f-head);text-transform:uppercase}
+  .nav ul{flex-direction:column;gap:22px}
+  .nav a{font:500 16px/1.2 var(--f-head);letter-spacing:.06em;text-transform:uppercase}
   .menu-btn{display:block;position:relative;z-index:30}
   .header .btn{display:none}
   .header{height:76px}
@@ -367,9 +368,9 @@ a.doc:hover{background:var(--ink);color:var(--white)}.doc.off{border-style:dashe
 @media (max-width:560px){.feat{grid-template-columns:1fr}.feat li,.feat li:first-child,.feat li:last-child{border-left:0;padding:20px 0;border-top:1px solid var(--line)}.feat li:first-child{border-top:0}.docs{flex-direction:column;align-items:flex-start}.docs .note+.note{margin-left:0}.docs .doc{width:100%;justify-content:space-between}}
 @media (prefers-reduced-motion:reduce){.tech .shot img,.tt .acc{transition:none}.tech.rv:not(.in) .shot img{transform:none}}
 /* Floating WhatsApp button */
-.wa{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:14;width:72px;height:72px;border-radius:50%;background:#7A5C45;color:#F6F2ED;display:flex;align-items:center;justify-content:center;opacity:0;animation:waIn .8s var(--ease) 1.6s forwards;transition:transform .35s var(--ease),background .35s}
+.wa{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:14;width:58px;height:58px;border-radius:50%;background:#7A5C45;color:#F6F2ED;display:flex;align-items:center;justify-content:center;opacity:0;animation:waIn .8s var(--ease) 1.6s forwards;transition:transform .35s var(--ease),background .35s}
 .wa::before{content:'';position:absolute;inset:0;border-radius:50%;border:1px solid #7A5C45;animation:waPulse 3.6s ease-out 2.6s infinite;pointer-events:none}
-.wa.ph{right:auto;left:20px}.wa svg{width:39px;height:39px}
+.wa.ph{right:auto;left:20px}.wa svg{width:30px;height:30px}
 .wa:hover{transform:scale(1.07);background:#654A36}
 .wa:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 @keyframes waIn{to{opacity:1}}
@@ -510,7 +511,7 @@ a.doc:hover{background:var(--ink);color:var(--white)}.doc.off{border-style:dashe
     </ul>
   </nav>
   <button class="btn sm a-fade" data-consult style="animation-delay:.25s">Записаться <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню"><span></span><span></span></button>
+  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню"><span></span><span></span><span></span></button>
 </header>
 
 <main id="top">
@@ -612,7 +613,7 @@ document.querySelectorAll('.rv').forEach(e=>io?io.observe(e):e.classList.add('in
 })();
 /* ===== Sections 04-08: editable content ===== */
 const SITE2={
- results:{eyebrow:'04 / РЕЗУЛЬТАТЫ',titleLines:['РЕЗУЛЬТАТ, КОТОРЫЙ','МОЖНО УВИДЕТЬ'],lead:'Реальные результаты пациентов Expert Clinic. Каждая программа подбирается индивидуально с учётом состояния кожи, выбранной методики и целей пациента.',cta:'Записаться на консультацию',
+ results:{eyebrow:'04 / РЕЗУЛЬТАТЫ',titleLines:['РЕЗУЛЬТАТ, КОТОРЫЙ','МОЖНО УВИДЕТЬ'],lead:'Каждая программа подбирается индивидуально с учётом состояния кожи, выбранной методики и целей пациента.',cta:'Записаться на консультацию',
   /* Cases: add/remove objects. A case is shown only when BOTH beforeImage and afterImage are set; until the first real case is added, these placeholder cases are shown as a preview. pos = object-position for face alignment. */
   hideIncomplete:false, /* false: all slides are shown (placeholder until both photos are added); true: only slides that have both photos */
   cases:[
